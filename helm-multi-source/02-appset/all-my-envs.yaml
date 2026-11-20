@@ -32,16 +32,20 @@ spec:
       - env: prod-us
         region: us 
         type: prod
-        version: prod         
-  template:      
-    metadata:
-      name: '{{.env}}' 
+        version: prod
+      - env: integration-gpu
+        region: us 
+        type: non-prod
+        version: prod                  
+      - env: integration-non-gpu
+        region: us 
+        type: non-prod
     spec:
       # The project the application belongs to.
       project: default
 
       sources:
-        - repoURL: https://github.com/pejmanm6161/gitops-cert-level-3-examples.git
+        - repoURL: https://github.com/codefresh-contrib/gitops-cert-level-3-examples.git
           path: helm-multi-source/my-chart
           targetRevision: HEAD
           helm:
@@ -51,7 +55,7 @@ spec:
             - $values/helm-multi-source/my-values/env-type/{{.type}}-values.yaml  
             - $values/helm-multi-source/my-values/regions/{{.region}}-values.yaml                
             - $values/helm-multi-source/my-values/envs/{{.env}}-values.yaml
-        - repoURL: 'https://github.com/pejmanm6161/gitops-cert-level-3-examples.git'
+        - repoURL: 'https://github.com/codefresh-contrib/gitops-cert-level-3-examples.git'
           targetRevision: HEAD
           ref: values
       
