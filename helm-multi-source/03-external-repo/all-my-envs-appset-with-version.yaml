@@ -16,7 +16,7 @@ spec:
     metadata:
       name: '{{.env}}' 
     spec:
-      # The project the application belongs to.
+      # The project the application belongs to..
       project: default
 
       sources:
