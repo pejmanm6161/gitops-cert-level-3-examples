@@ -10,40 +10,40 @@ spec:
   - list:
       elements:
       - env: qa
-        region: us  
-        type: non-prod   
-        version: qa     
+        region: us
+        type: non-prod
+        version: qa
       - env: staging-asia
         region: asia
-        type: non-prod  
-        version: staging       
+        type: non-prod
+        version: staging  
       - env: staging-eu
         region: eu
-        type: non-prod  
-        version: staging       
+        type: non-prod
+        version: staging
       - env: staging-us
         region: us
-        type: non-prod  
-        version: staging       
+        type: non-prod
+        version: staging 
       - env: prod-eu
-        region: eu  
-        type: prod  
-        version: prod       
+        region: eu
+        type: prod
+        version: prod
       - env: prod-us
-        region: us 
+        region: us
         type: prod
         version: prod
       - env: integration-gpu
         region: us
         type: non-prod
-        version: prod          
+        version: qa
       - env: integration-non-gpu
-        region: us 
+        region: us
         type: non-prod
-        version: non-prod  # <-- FIXED: Added missing version to prevent missingkey=error
-  template:                # <-- FIXED: Added missing template wrapper
+        version: qa
+  template:      
     metadata:
-      name: '{{.env}}'     # <-- FIXED: Each generated app needs a unique name
+      name: '{{.env}}'
     spec:
       # The project the application belongs to.
       project: default
