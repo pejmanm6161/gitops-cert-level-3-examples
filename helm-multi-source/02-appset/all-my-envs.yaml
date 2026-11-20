@@ -40,6 +40,10 @@ spec:
       - env: integration-non-gpu
         region: us 
         type: non-prod
+        version: non-prod  # <-- FIXED: Added missing version to prevent missingkey=error
+  template:                # <-- FIXED: Added missing template wrapper
+    metadata:
+      name: '{{.env}}'     # <-- FIXED: Each generated app needs a unique name
     spec:
       # The project the application belongs to.
       project: default
@@ -70,5 +74,4 @@ spec:
           - CreateNamespace=true  
         automated: 
           prune: true 
-          selfHeal: true 
-      
+          selfHeal: true
